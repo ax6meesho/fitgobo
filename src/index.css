@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #D9FF00;
+  --color-brand-cyan: #22d3ee;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-[#0F1115] text-slate-200 min-h-screen font-sans;
+  background-image: 
+    radial-gradient(circle at -20% -20%, rgba(217, 255, 0, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 120% 120%, rgba(34, 211, 238, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+.glass {
+  @apply bg-black/40 backdrop-blur-xl border border-white/10;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

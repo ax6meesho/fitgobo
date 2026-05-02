@@ -1,0 +1,6 @@
+{
+  "name": "FitGOBO",
+  "description": "A mobile-first, AI-powered fitness coaching app with personalized workout generation, BMI tracking, and diet suggestions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["firebase", "ai"]
+}

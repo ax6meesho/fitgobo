@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user fitness preferences and onboarding status.",
+      "type": "object",
+      "properties": {
+        "goal": { "type": "string" },
+        "level": { "type": "string" },
+        "time": { "type": "string" },
+        "onboarded": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["goal", "level", "time", "onboarded"]
+    },
+    "Exercise": {
+      "title": "Exercise",
+      "type": "object",
+      "properties": {
+        "exercise": { "type": "string" },
+        "sets": { "type": "string" },
+        "reps": { "type": "string" },
+        "duration": { "type": "string" }
+      }
+    },
+    "Workout": {
+      "title": "Workout Record",
+      "description": "Records a completed or generated workout session.",
+      "type": "object",
+      "properties": {
+        "workoutName": { "type": "string" },
+        "duration": { "type": "number" },
+        "difficulty": { "type": "string" },
+        "warmup": { "type": "array", "items": { "$ref": "#/entities/Exercise" } },
+        "mainExercises": { "type": "array", "items": { "$ref": "#/entities/Exercise" } },
+        "coolDown": { "type": "array", "items": { "$ref": "#/entities/Exercise" } },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "completedAt": { "type": "object" }
+      },
+      "required": ["workoutName", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/users/{userId}/history/{workoutId}": {
+      "schema": "Workout",
+      "description": "Workout history for a specific user"
+    }
+  }
+}
